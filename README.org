@@ -1,0 +1,4 @@
+#+title: wgsl-mode
+#+options: toc:nil
+
+Emacs syntax highlighting for the [[https://gpuweb.github.io/gpuweb/wgsl.html][WebGPU Shading Language (WGSL)]].
