@@ -25,16 +25,24 @@
 (require 'cc-fonts)
 
 (defvar wgsl-keywords-regexp
-  (rx (seq (group (or "struct" "fn" "var" "const")) (or space "<"))))
+  (rx (seq (group (or "struct" "fn" "var" "const" "ptr")) (or space "<"))))
 
 (defvar wgsl-keywords-regexp2
-  (rx (or "if" "else" "switch" "case" "loop" "continuing" "default" "break" "continue")))
+  (rx (or "if" "else"
+          "switch" "case" "default" "break" "fallthrough"
+          "loop" "continuing"  "continue"
+          "return")))
 
 (defvar wgsl-attributes-regexp
-  (rx (or "builtin" "block" "group" "binding" "stage" "workgroup_size" "access" "stride")))
+  (rx (or "builtin" "block" "group" "binding" "stage" "workgroup_size" "access"
+          "stride")))
 
 (defvar wgsl-storage-classes-regexp
-  (rx (seq "<" (group (or "in" "out" "function" "private" "workgroup" "uniform" "storage" "handle")) ">")))
+  (rx (seq "<"
+           (* (not ?>))
+           (group (or "in" "out" "function" "private" "workgroup" "uniform"
+                      "storage" "handle"))
+           (or ">" ","))))
 
 (defvar wgsl-builtins-regexp
   (rx (or "vertex_index"
