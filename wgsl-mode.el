@@ -45,20 +45,22 @@
            (or ">" ","))))
 
 (defvar wgsl-builtins-regexp
-  (rx (or "vertex_index"
-          "instance_index"
-          "position"
-          "frag_coord"
-          "front_facing"
-          "frag_depth"
-          "local_invocation_id"
-          "local_invocation_index"
-          "global_invocation_id"
-          "workgroup_id"
-          "workgroup_size"
-          "sample_index"
-          "sample_mask_in"
-          "sample_mask_out")))
+  (rx (seq
+       (not (any alphanumeric ?_))
+       (group (or "vertex_index"
+                  "instance_index"
+                  "position"
+                  "frag_coord"
+                  "front_facing"
+                  "frag_depth"
+                  "local_invocation_id"
+                  "local_invocation_index"
+                  "global_invocation_id"
+                  "workgroup_id"
+                  "workgroup_size"
+                  "sample_index"
+                  "sample_mask_in"
+                  "sample_mask_out")))))
 
 (defvar wgsl-constants-regexp
   (rx (or "compute" "vertex" "fragment" "read" "write" "read_write")))
@@ -76,7 +78,7 @@
   (rx (seq (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) ":")))
 
 (defvar wgsl-font-lock-keywords
-  `((,wgsl-builtins-regexp . font-lock-builtin-face)
+  `((,wgsl-builtins-regexp 1 font-lock-builtin-face)
     (,wgsl-constants-regexp . font-lock-constant-face)
     (,wgsl-storage-classes-regexp 1 font-lock-constant-face)
     (,wgsl-types-regexp . font-lock-type-face)
