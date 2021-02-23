@@ -72,7 +72,7 @@
            (not (any alphanumeric ?_)))))
 
 (defvar wgsl-scalar-types-regexp
-  (rx (or "f32" "u32" "i32" "bool")))
+  (rx (or "f32" "u32" "i32" "bool" "void")))
 
 (defvar wgsl-types-regexp
   (rx (or (regexp wgsl-scalar-types-regexp)
