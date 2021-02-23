@@ -34,8 +34,11 @@
           "return")))
 
 (defvar wgsl-attributes-regexp
-  (rx (or "builtin" "block" "group" "binding" "stage" "workgroup_size" "access"
-          "stride")))
+  (rx (seq
+       (or "[[" "," space)
+       (group (or "builtin" "block" "location" "group" "binding" "stage" "workgroup_size" "access"
+                  "stride"))
+       "(")))
 
 (defvar wgsl-storage-classes-regexp
   (rx (seq "<"
@@ -60,10 +63,13 @@
                   "workgroup_size"
                   "sample_index"
                   "sample_mask_in"
-                  "sample_mask_out")))))
+                  "sample_mask_out"))
+       (not (any alphanumeric ?_)))))
 
 (defvar wgsl-constants-regexp
-  (rx (or "compute" "vertex" "fragment" "read" "write" "read_write")))
+  (rx (seq (not (any alphanumeric ?_))
+           (group (or "compute" "vertex" "fragment" "read" "write" "read_write"))
+           (not (any alphanumeric ?_)))))
 
 (defvar wgsl-scalar-types-regexp
   (rx (or "f32" "u32" "i32" "bool")))
@@ -79,10 +85,10 @@
 
 (defvar wgsl-font-lock-keywords
   `((,wgsl-builtins-regexp 1 font-lock-builtin-face)
-    (,wgsl-constants-regexp . font-lock-constant-face)
+    (,wgsl-constants-regexp 1 font-lock-constant-face)
     (,wgsl-storage-classes-regexp 1 font-lock-constant-face)
     (,wgsl-types-regexp . font-lock-type-face)
-    (,wgsl-attributes-regexp . font-lock-builtin-face)
+    (,wgsl-attributes-regexp 1 font-lock-builtin-face)
     (,wgsl-keywords-regexp 1 font-lock-keyword-face)
     (,wgsl-keywords-regexp2 . font-lock-keyword-face)
     (,wgsl-variable-name-regexp 1 font-lock-variable-name-face)))
