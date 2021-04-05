@@ -31,7 +31,7 @@
   (rx (or "if" "else"
           "switch" "case" "default" "break" "fallthrough"
           "loop" "continuing"  "continue"
-          "return")))
+          "return" "for")))
 
 (defvar wgsl-attributes-regexp
   (rx (seq
