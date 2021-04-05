@@ -96,6 +96,7 @@
 ;;;###autoload
 (define-derived-mode wgsl-mode c++-mode "WGSL"
   "Major mode for WGSL source"
+  (add-to-list 'c-offsets-alist '(access-label . 0))
   (font-lock-remove-keywords 'wgsl-mode c++-font-lock-keywords-3)
   (font-lock-add-keywords nil wgsl-font-lock-keywords))
 
