@@ -25,7 +25,7 @@
 (require 'cc-fonts)
 
 (defvar wgsl-keywords-regexp
-  (rx (seq (group (or "struct" "fn" "var" "const" "ptr" "type")) (or space "<"))))
+  (rx (seq (group (or "struct" "fn" "var" "let" "ptr" "type")) (or space "<"))))
 
 (defvar wgsl-keywords-regexp2
   (rx (or "if" "else"
