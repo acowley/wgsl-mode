@@ -28,10 +28,11 @@
   (rx (seq (group (or "struct" "fn" "var" "let" "ptr" "type")) (or space "<"))))
 
 (defvar wgsl-keywords-regexp2
-  (rx (or "if" "else"
-          "switch" "case" "default" "break" "fallthrough"
-          "loop" "continuing"  "continue"
-          "return" "for")))
+  (rx (seq (group (or "if" "else"
+                      "switch" "case" "default" "break" "fallthrough"
+                      "loop" "continuing"  "continue"
+                      "return" "for"))
+           (or space "<"))))
 
 (defvar wgsl-attributes-regexp
   (rx (seq
@@ -90,7 +91,7 @@
     (,wgsl-types-regexp . font-lock-type-face)
     (,wgsl-attributes-regexp 1 font-lock-builtin-face)
     (,wgsl-keywords-regexp 1 font-lock-keyword-face)
-    (,wgsl-keywords-regexp2 . font-lock-keyword-face)
+    (,wgsl-keywords-regexp2 1 font-lock-keyword-face)
     (,wgsl-variable-name-regexp 1 font-lock-variable-name-face)))
 
 ;;;###autoload
