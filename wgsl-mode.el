@@ -32,7 +32,7 @@
                       "switch" "case" "default" "break" "fallthrough"
                       "loop" "continuing"  "continue"
                       "return" "for"))
-           (or space "<"))))
+           (or space "<" "("))))
 
 (defvar wgsl-attributes-regexp
   (rx (seq
