@@ -28,7 +28,7 @@
   (rx (seq (group (or "struct" "fn" "var" "let" "ptr" "type")) (or space "<"))))
 
 (defvar wgsl-keywords-regexp2
-  (rx (seq (group (or "if" "else"
+  (rx (seq (group (or "if" "else" "elseif"
                       "switch" "case" "default" "break" "fallthrough"
                       "loop" "continuing"  "continue"
                       "return" "for"))
