@@ -32,14 +32,14 @@
                       "switch" "case" "default" "break" "fallthrough"
                       "loop" "continuing"  "continue"
                       "return" "for"))
-           (or space "<" "("))))
+           (or space "<" "(" ";" "{"))))
 
 (defvar wgsl-attributes-regexp
   (rx (seq
        (or "[[" "," space)
        (group (or "builtin" "block" "location" "group" "binding" "stage" "workgroup_size" "access"
                   "stride"))
-       "(")))
+       (or "]]" "("))))
 
 (defvar wgsl-storage-classes-regexp
   (rx (seq "<"
@@ -82,7 +82,7 @@
           (seq "array"))))
 
 (defvar wgsl-variable-name-regexp
-  (rx (seq (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) ":")))
+  (rx (seq (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) (or ":" "="))))
 
 (defvar wgsl-font-lock-keywords
   `((,wgsl-builtins-regexp 1 font-lock-builtin-face)
