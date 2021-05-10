@@ -84,6 +84,9 @@
 (defvar wgsl-variable-name-regexp
   (rx (seq (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) (or ":" "="))))
 
+(defvar wgsl-function-name-regexp
+  (rx (seq "fn" (+ space) (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) "(")))
+
 (defvar wgsl-font-lock-keywords
   `((,wgsl-builtins-regexp 1 font-lock-builtin-face)
     (,wgsl-constants-regexp 1 font-lock-constant-face)
@@ -92,7 +95,8 @@
     (,wgsl-attributes-regexp 1 font-lock-builtin-face)
     (,wgsl-keywords-regexp 1 font-lock-keyword-face)
     (,wgsl-keywords-regexp2 1 font-lock-keyword-face)
-    (,wgsl-variable-name-regexp 1 font-lock-variable-name-face)))
+    (,wgsl-variable-name-regexp 1 font-lock-variable-name-face)
+    (,wgsl-function-name-regexp 1 font-lock-function-name-face)))
 
 ;;;###autoload
 (define-derived-mode wgsl-mode c++-mode "WGSL"
