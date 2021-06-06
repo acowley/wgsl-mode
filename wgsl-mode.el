@@ -105,5 +105,8 @@
   (font-lock-remove-keywords 'wgsl-mode c++-font-lock-keywords-3)
   (font-lock-add-keywords nil wgsl-font-lock-keywords))
 
+;;;###autoload
+(progn (add-to-list 'auto-mode-alist '("\\.wgsl\\'" . wgsl-mode)))
+
 (provide 'wgsl-mode)
 ;;; wgsl-mode.el ends here
