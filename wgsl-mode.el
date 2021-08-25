@@ -24,31 +24,31 @@
 
 (require 'cc-fonts)
 
-(defvar wgsl-keywords-regexp
+(defconst wgsl-keywords-regexp
   (rx (seq (group (or "struct" "fn" "var" "let" "ptr" "type")) (or space "<"))))
 
-(defvar wgsl-keywords-regexp2
+(defconst wgsl-keywords-regexp2
   (rx (seq (group (or "if" "else" "elseif"
                       "switch" "case" "default" "break" "fallthrough"
                       "loop" "continuing"  "continue"
                       "return" "for"))
            (or space "<" "(" ";" "{"))))
 
-(defvar wgsl-attributes-regexp
+(defconst wgsl-attributes-regexp
   (rx (seq
        (or "[[" "," space)
        (group (or "builtin" "block" "location" "group" "binding" "stage" "workgroup_size" "access"
                   "stride"))
        (or "]]" "("))))
 
-(defvar wgsl-storage-classes-regexp
+(defconst wgsl-storage-classes-regexp
   (rx (seq "<"
            (* (not ?>))
            (group (or "in" "out" "function" "private" "workgroup" "uniform"
                       "storage" "handle"))
            (or ">" ","))))
 
-(defvar wgsl-builtins-regexp
+(defconst wgsl-builtins-regexp
   (rx (seq
        symbol-start
        (group (or "vertex_index"
@@ -67,27 +67,27 @@
                   "sample_mask_out"))
        symbol-end)))
 
-(defvar wgsl-constants-regexp
+(defconst wgsl-constants-regexp
   (rx (seq symbol-start
            (group (or "compute" "vertex" "fragment" "read" "write" "read_write"))
            symbol-end)))
 
-(defvar wgsl-scalar-types-regexp
+(defconst wgsl-scalar-types-regexp
   (rx (or "f32" "u32" "i32" "bool" "void")))
 
-(defvar wgsl-types-regexp
+(defconst wgsl-types-regexp
   (rx (or (regexp wgsl-scalar-types-regexp)
           (seq "vec" (or "2" "3" "4"))
           (seq "mat" (or "2" "3" "4") "x" (or "2" "3" "4"))
           (seq "array"))))
 
-(defvar wgsl-variable-name-regexp
+(defconst wgsl-variable-name-regexp
   (rx (seq (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) (or ":" "="))))
 
-(defvar wgsl-function-name-regexp
+(defconst wgsl-function-name-regexp
   (rx (seq "fn" (+ space) (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) "(")))
 
-(defvar wgsl-font-lock-keywords
+(defconst wgsl-font-lock-keywords
   `((,wgsl-builtins-regexp 1 font-lock-builtin-face)
     (,wgsl-constants-regexp 1 font-lock-constant-face)
     (,wgsl-storage-classes-regexp 1 font-lock-constant-face)
