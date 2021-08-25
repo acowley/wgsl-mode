@@ -76,10 +76,12 @@
   (rx (or "f32" "u32" "i32" "bool" "void")))
 
 (defconst wgsl-types-regexp
-  (rx (or (regexp wgsl-scalar-types-regexp)
+  (rx symbol-start
+      (or (regexp wgsl-scalar-types-regexp)
           (seq "vec" (or "2" "3" "4"))
           (seq "mat" (or "2" "3" "4") "x" (or "2" "3" "4"))
-          (seq "array"))))
+          (seq "array"))
+      symbol-end))
 
 (defconst wgsl-variable-name-regexp
   (rx (seq (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) (or ":" "="))))
