@@ -50,7 +50,7 @@
 
 (defvar wgsl-builtins-regexp
   (rx (seq
-       (not (any alphanumeric ?_))
+       symbol-start
        (group (or "vertex_index"
                   "instance_index"
                   "position"
@@ -65,12 +65,12 @@
                   "sample_index"
                   "sample_mask_in"
                   "sample_mask_out"))
-       (not (any alphanumeric ?_)))))
+       symbol-end)))
 
 (defvar wgsl-constants-regexp
-  (rx (seq (not (any alphanumeric ?_))
+  (rx (seq symbol-start
            (group (or "compute" "vertex" "fragment" "read" "write" "read_write"))
-           (not (any alphanumeric ?_)))))
+           symbol-end)))
 
 (defvar wgsl-scalar-types-regexp
   (rx (or "f32" "u32" "i32" "bool" "void")))
