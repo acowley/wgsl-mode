@@ -80,7 +80,12 @@
       (or (regexp wgsl-scalar-types-regexp)
           (seq "vec" (or "2" "3" "4"))
           (seq "mat" (or "2" "3" "4") "x" (or "2" "3" "4"))
-          (seq "array"))
+          (seq "array")
+          (seq "texture"
+               (or "" "_storage" "_depth")
+               (opt "_multisampled")
+               (or "_1d" "_2d" "_3d" "_cube")
+               (opt "_array")))
       symbol-end))
 
 (defconst wgsl-variable-name-regexp
