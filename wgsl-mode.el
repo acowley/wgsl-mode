@@ -1,4 +1,4 @@
-;;; wgsl-mode.el --- Syntax highlighting for the WebGPU Shading Language. -*- lexical-binding: t; -*-
+;;; wgsl-mode.el --- Syntax highlighting for the WebGPU Shading Language -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022 Anthony Cowley
 ;; Author: Anthony Cowley
@@ -117,7 +117,7 @@
   (font-lock-add-keywords nil wgsl-font-lock-keywords))
 
 ;;;###autoload
-(progn (add-to-list 'auto-mode-alist '("\\.wgsl\\'" . wgsl-mode)))
+(add-to-list 'auto-mode-alist '("\\.wgsl\\'" . wgsl-mode))
 
 (provide 'wgsl-mode)
 ;;; wgsl-mode.el ends here
