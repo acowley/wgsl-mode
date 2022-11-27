@@ -1,7 +1,9 @@
-;;; wgsl-mode.el --- Syntax coloring for GAL
+;;; wgsl-mode.el --- Syntax highlighting for the WebGPU Shading Language. -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2021 Anthony Cowley
+;; Copyright (C) 2022 Anthony Cowley
 ;; Author: Anthony Cowley
+;; URL: https://github.com/acowley/wgsl-mode
+;; Package-Requires: ((emacs "24"))
 ;; Keywords: wgsl, c
 ;; Version: 1.0
 
@@ -18,9 +20,11 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;;; Commentary
+;;; Commentary:
 
 ;; Syntax highlighting for the WebGPU Shading Language (WGSL).
+
+;;; Code:
 
 (require 'cc-fonts)
 
