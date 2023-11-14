@@ -66,6 +66,7 @@
                   "global_invocation_id"
                   "workgroup_id"
                   "workgroup_size"
+                  "num_workgroups"
                   "sample_index"
                   "sample_mask_in"
                   "sample_mask_out"))
