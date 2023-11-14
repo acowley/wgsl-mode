@@ -54,6 +54,7 @@
 
 (defconst wgsl-builtins-regexp
   (rx (seq
+       "@builtin("
        symbol-start
        (group (or "vertex_index"
                   "instance_index"
@@ -70,7 +71,8 @@
                   "sample_index"
                   "sample_mask_in"
                   "sample_mask_out"))
-       symbol-end)))
+       symbol-end
+       ")")))
 
 (defconst wgsl-constants-regexp
   (rx (seq symbol-start
