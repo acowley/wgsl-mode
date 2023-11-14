@@ -40,7 +40,7 @@
 
 (defconst wgsl-attributes-regexp
   (rx (seq
-       (or "[[" "," space)
+       (or "[[" "," "@" space)
        (group (or "builtin" "block" "location" "group" "binding" "stage" "workgroup_size" "access"
                   "stride"))
        (or "]]" "("))))
